@@ -1,0 +1,69 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ODAW",
+    "dateExported": "2023-06-22T22:57:38.920Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
+            "name": "Products",
+            "containerId": "",
+            "created": "2023-06-22T20:31:44.646Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "b9928b38-999b-4c8d-be75-f67afdcca875",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
+            "name": "Get All",
+            "url": "api/v1/products/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-22T20:31:40.075Z",
+            "modified": "2023-06-22T20:40:59.743Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "77d01697-940b-468c-9469-a5a68d245eaf",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
+            "name": "Create",
+            "url": "api/v1/products/",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-06-22T20:40:31.353Z",
+            "modified": "2023-06-22T20:45:05.061Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Ford Ka\",\n  \"value\":5000,\n  \"category\":\"VEHICLES\",\n  \"description\":\"novinho pa caramba\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6b3eac13-4911-4507-a60f-982ffeef3752",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
+            "name": "Delete",
+            "url": "api/v1/products/ ",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2023-06-22T20:50:18.380Z",
+            "modified": "2023-06-22T20:51:41.284Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:3000/"
+        }
+    }
+}
