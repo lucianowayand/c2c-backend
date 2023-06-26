@@ -219,7 +219,18 @@ export class ProductService {
 
     async delete(productId: string){
         try {
-            await this.productEntity.delete({id: productId});
+            const product = await this.productEntity.findOne({
+                where: {
+                    id: productId
+                }
+            })
+            if (!product) {
+                throw new HttpException('Product not found', HttpStatus.NOT_FOUND);
+            }
+            await this.photoEntity.update({product: {id: productId}}, {deletedAt: new Date()});
+            await this.chatEntity.update({product: {id: productId}}, {status: false});
+            await this.productEntity.update({id: productId}, {deletedAt: new Date()});
+
         } catch(error) {
             throw new HttpException(`erro ao deletar produto: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
         }
