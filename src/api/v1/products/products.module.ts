@@ -6,9 +6,10 @@ import { IsAuthorizedMiddleware } from '../users/users.middleware';
 import { ProductController } from './products.controller';
 import { ProductService } from './products.service';
 import { PhotoEntity } from './entities/photo.entity';
+import { ChatEntity } from './entities/chat.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([ProductEntity,PhotoEntity])],
+    imports: [TypeOrmModule.forFeature([ProductEntity,PhotoEntity,ChatEntity])],
     providers: [ProductService, JwtService],
     controllers: [ProductController]
   })

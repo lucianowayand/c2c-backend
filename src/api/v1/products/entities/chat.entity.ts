@@ -27,7 +27,7 @@ import { MessageEntity } from './message.entity';
     @DeleteDateColumn()
     deletedAt: Date;
   
-    @Column()
+    @Column({ default: true })
     status: boolean;
   
     @ManyToOne(() => ProductEntity, (product) => product.chats)

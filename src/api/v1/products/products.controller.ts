@@ -16,6 +16,26 @@ export class ProductController {
         return await this.productService.findByUser(userId);
     }
 
+    @Post('/:product_id/chat/:buyer_id')
+    async startConversation(@Param('buyer_id') buyer_id: string, @Param('product_id') product_id: string) {
+        return await this.productService.startConversation(buyer_id, product_id);
+    }
+
+    @Get('/:product_id/chat/')
+    async getChatsByProduct(@Param('product_id') product_id: string) {
+        return await this.productService.getChatsByProduct(product_id);
+    }
+
+    @Get('/chat/buyer/:buyer_id')
+    async getChatsByBuyer(@Param('buyer_id') buyer_id: string) {
+        return await this.productService.getChatsByBuyer(buyer_id);
+    }
+
+    @Get('/chat/owner/:owner_id')
+    async getChatsByOwner(@Param('owner_id') buyer_id: string) {
+        return await this.productService.getChatsByOwner(buyer_id);
+    }
+
     @Post()
     async create(@Body() body: ProductEntity) {
         return await this.productService.create(body);
