@@ -5,7 +5,7 @@ import { ProductEntity } from '../../products/entities/products.entity';
 @Entity('users')
 export class UserEntity {
     @PrimaryGeneratedColumn('uuid')
-    id: number;
+    id: string;
 
     @CreateDateColumn()
     createdAt: Date;

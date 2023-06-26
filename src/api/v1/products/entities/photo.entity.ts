@@ -28,7 +28,7 @@ import {
     photo_url: string;
   
     @ManyToOne(() => ProductEntity, (product) => product.photos)
-    @JoinColumn({ name: 'product_id' }) // Specify the foreign key column name
+    @JoinColumn({ name: 'product_id' })
     product: ProductEntity;
   }
   

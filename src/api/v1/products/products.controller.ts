@@ -11,6 +11,11 @@ export class ProductController {
         return await this.productService.findAll();
     }
 
+    @Get('/user/:userId')
+    async findByUser(@Param('userId') userId: string) {
+        return await this.productService.findByUser(userId);
+    }
+
     @Post()
     async create(@Body() body: ProductEntity) {
         return await this.productService.create(body);

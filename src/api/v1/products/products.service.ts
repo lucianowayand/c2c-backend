@@ -23,6 +23,25 @@ export class ProductService {
         }
     }
 
+    async findByUser(userId: string) {
+        try {
+            const products = await this.productEntity.find({
+                where: {
+                    owner: {
+                        id: userId
+                    }
+                },
+                relations: ['photos']
+            })
+            if (!products) {
+                throw new HttpException('Product list not found', HttpStatus.NOT_FOUND);
+            }
+            return products;
+        } catch (error) {
+            throw new HttpException(`erro ao buscar produtos: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+        }
+    }
+
     async create(product: ProductEntity){
         try {
             await this.productEntity.save(product);

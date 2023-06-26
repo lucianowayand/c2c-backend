@@ -43,7 +43,7 @@ import { UserEntity } from '../../users/entities/user.entity';
     @Column('boolean', { default: true })
     status: boolean;
   
-    @ManyToOne(() => UserEntity, (user) => user.products)
+    @ManyToOne(() => UserEntity, (user) => user.products, { nullable: false })
     @JoinColumn({ name: 'owner_id' })
     owner: UserEntity;
 

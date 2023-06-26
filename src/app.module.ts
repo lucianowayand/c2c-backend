@@ -18,7 +18,7 @@ import { ProductService } from './api/v1/products/products.service';
     password: process.env.DB_PASS,
     synchronize: false,
     entities: [__dirname + "/**/*.entity{.ts,.js}"],
-  }), UsersModule, ProductModule],
+  }), UsersModule, ProductModule, ProductModule],
   controllers: [AppController],
   providers: [AppService],
 })
