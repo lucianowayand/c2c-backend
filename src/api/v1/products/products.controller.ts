@@ -36,6 +36,16 @@ export class ProductController {
         return await this.productService.getChatsByOwner(buyer_id);
     }
 
+    @Post('/chat/:chat_id/message')
+    async sendMessage(@Param('chat_id') chat_id: string, @Body() body: {message: string, sender: string}) {
+        return await this.productService.sendMessage(chat_id, body);
+    }
+
+    @Get('/chat/:chat_id/message')
+    async getMessages(@Param('chat_id') chat_id: string) {
+        return await this.productService.getMessages(chat_id);
+    }
+
     @Post()
     async create(@Body() body: ProductEntity) {
         return await this.productService.create(body);

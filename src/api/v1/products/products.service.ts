@@ -3,13 +3,19 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProductEntity } from './entities/products.entity';
 import { ChatEntity } from './entities/chat.entity';
-
+import { MessageEntity } from './entities/message.entity';
+import * as bcrypt from 'bcrypt';
+import { PhotoEntity } from './entities/photo.entity';
 @Injectable()
 export class ProductService {
     constructor(@InjectRepository(ProductEntity) private readonly productEntity: Repository<ProductEntity>, 
-        @InjectRepository(ChatEntity) private readonly chatEntity: Repository<ChatEntity>) {
-        this.chatEntity = chatEntity;
-        this.productEntity = productEntity;
+        @InjectRepository(ChatEntity) private readonly chatEntity: Repository<ChatEntity>,
+        @InjectRepository(PhotoEntity) private readonly photoEntity: Repository<PhotoEntity>,
+        @InjectRepository(MessageEntity) private readonly messageEntity: Repository<MessageEntity>) {
+            this.messageEntity = messageEntity;
+            this.chatEntity = chatEntity;
+            this.photoEntity = photoEntity;
+            this.productEntity = productEntity;
     }
 
     async startConversation(buyer_id: string, product_id: string) {
@@ -109,6 +115,52 @@ export class ProductService {
         }
     }
 
+    async sendMessage(chat_id: string, { message, sender}: { message: string, sender: string }) {
+        try {
+            const chat = await this.chatEntity.findOne({
+                where: {
+                    id: chat_id
+                }
+            })
+            if (!chat) {
+                throw new HttpException('Chat not found', HttpStatus.NOT_FOUND);
+            }
+
+            const newMessage = await this.messageEntity.save({
+                chat: {
+                    id: chat_id
+                },
+                text: message,
+                sender_id: sender
+            })
+            return newMessage;
+
+        } catch (error) {
+            throw new HttpException(`erro ao enviar mensagem: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    async getMessages(chat_id: string) {
+        try {
+            const messages = await this.messageEntity.find({
+                where: {
+                    chat: {
+                        id: chat_id
+                    }
+                },
+                order: {
+                    createdAt: 'DESC'
+                }
+            })
+            if (!messages) {
+                throw new HttpException('Messages not found', HttpStatus.NOT_FOUND);
+            }
+            return messages;
+        } catch (error) {
+            throw new HttpException(`erro ao buscar mensagens: ${error}`, HttpStatus.BAD_REQUEST);
+        }
+    }
+
     async findAll() {
         try {
             const products = await this.productEntity.find({
@@ -144,6 +196,10 @@ export class ProductService {
 
     async create(product: ProductEntity){
         try {
+            if(product.photos.length > 0) {
+                const photos = await this.photoEntity.save(product.photos);
+                product.photos = photos;
+            }
             await this.productEntity.save(product);
 
         } catch(error) {
