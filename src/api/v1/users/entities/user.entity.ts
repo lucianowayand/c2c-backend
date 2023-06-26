@@ -1,9 +1,10 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { LibraryEntity } from '../../library/entities/library.entity';
+import { ChatEntity } from '../../products/entities/chat.entity';
+import { ProductEntity } from '../../products/entities/products.entity';
 
 @Entity('users')
 export class UserEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number;
 
     @CreateDateColumn()
@@ -24,6 +25,9 @@ export class UserEntity {
     @Column()
     password: string;
 
-    @OneToMany(type => LibraryEntity, library => library.user)
-    library: LibraryEntity[];
+    @OneToMany(type => ProductEntity, product => product.owner)
+    products: ProductEntity[];
+
+    @OneToMany(type => ChatEntity, chat => chat.buyer)
+    chats: ChatEntity[];
 }

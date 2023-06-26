@@ -5,9 +5,10 @@ import { JwtService } from '@nestjs/jwt';
 import { IsAuthorizedMiddleware } from '../users/users.middleware';
 import { ProductController } from './products.controller';
 import { ProductService } from './products.service';
+import { PhotoEntity } from './entities/photo.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([ProductEntity])],
+    imports: [TypeOrmModule.forFeature([ProductEntity,PhotoEntity])],
     providers: [ProductService, JwtService],
     controllers: [ProductController]
   })

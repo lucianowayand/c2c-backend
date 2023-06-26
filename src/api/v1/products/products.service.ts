@@ -10,11 +10,17 @@ export class ProductService {
     }
 
     async findAll() {
-        const products = await this.productEntity.find();
-        if (!products) {
-            throw new HttpException('Product list not found', HttpStatus.NOT_FOUND);
+        try {
+            const products = await this.productEntity.find({
+                relations: ['photos']
+            })
+            if (!products) {
+                throw new HttpException('Product list not found', HttpStatus.NOT_FOUND);
+            }
+            return products;
+        } catch (error) {
+            throw new HttpException(`erro ao buscar produtos: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
         }
-        return products;
     }
 
     async create(product: ProductEntity){

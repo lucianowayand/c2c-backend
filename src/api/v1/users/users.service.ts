@@ -40,7 +40,7 @@ export class UsersService {
         return token
     }
 
-    async findOne(id: number) {
+    async findOne(id: string) {
         const user = await this.userRepository.findOne({
             where: {
                 id: id
@@ -64,7 +64,7 @@ export class UsersService {
         }
     }
 
-    async update(id: number, user: UserEntity) {
+    async update(id: string, user: UserEntity) {
         try {
             await this.userRepository.update(id, user);
         } catch (error) {
