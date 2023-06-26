@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "ODAW",
-    "dateExported": "2023-06-22T22:57:38.920Z",
+    "dateExported": "2023-06-26T02:08:10.163Z",
     "version": "1.1",
     "folders": [
         {
@@ -10,6 +10,20 @@
             "containerId": "",
             "created": "2023-06-22T20:31:44.646Z",
             "sortNum": 10000
+        },
+        {
+            "_id": "2058acf3-1cd9-4aae-baae-903ce5cefb40",
+            "name": "Users",
+            "containerId": "",
+            "created": "2023-06-26T00:19:54.728Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "3f9461a4-56a5-48a8-b888-7314484f7705",
+            "name": "Chat",
+            "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
+            "created": "2023-06-26T00:52:33.780Z",
+            "sortNum": 30000
         }
     ],
     "requests": [
@@ -17,7 +31,7 @@
             "_id": "b9928b38-999b-4c8d-be75-f67afdcca875",
             "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
             "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
-            "name": "Get All",
+            "name": "All",
             "url": "api/v1/products/",
             "method": "GET",
             "sortNum": 10000,
@@ -25,6 +39,51 @@
             "modified": "2023-06-22T20:40:59.743Z",
             "headers": [],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f0cabd74-63c9-4fc8-9d0b-3a64cfa26280",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "3f9461a4-56a5-48a8-b888-7314484f7705",
+            "name": "Start Chat",
+            "url": "api/v1/products/{product_id}/chat/{buyer_id}",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-06-26T00:48:47.617Z",
+            "modified": "2023-06-26T02:02:13.723Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "product_id",
+                    "value": "ee73c689-c2cb-4ae0-ad3c-8b05744c4155",
+                    "isPath": true
+                },
+                {
+                    "name": "buyer_id",
+                    "value": "43c776f8-9aba-47c7-8af2-a9bfb1bea5a8",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "e0e93a85-4c15-4f28-87b4-98b9c2882224",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
+            "name": "By User",
+            "url": "api/v1/products/user/{user_id}",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-06-26T00:36:35.865Z",
+            "modified": "2023-06-26T00:38:09.464Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "user_id",
+                    "value": "01cb11c6-ded7-4b66-bdcb-40c491768994",
+                    "isPath": true
+                }
+            ],
             "tests": []
         },
         {
@@ -36,12 +95,12 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-06-22T20:40:31.353Z",
-            "modified": "2023-06-22T20:45:05.061Z",
+            "modified": "2023-06-26T01:42:49.262Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\":\"Ford Ka\",\n  \"value\":5000,\n  \"category\":\"VEHICLES\",\n  \"description\":\"novinho pa caramba\"\n}",
+                "raw": "{\n  \"name\": \"Gol bola\",\n  \"value\": 5000,\n  \"category\": \"VEHICLES\",\n  \"owner\": \"01cb11c6-ded7-4b66-bdcb-40c491768994\",\n  \"photos\": [\n    {\n      \"photo_url\": \"abc.com\"\n    },\n    {\n      \"photo_url\": \"abc.com\"\n    },\n    {\n      \"photo_url\": \"abc.com\"\n    }\n  ],\n  \"description\": \"novinho pa caramba\"\n}",
                 "form": []
             },
             "tests": []
@@ -51,14 +110,188 @@
             "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
             "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
             "name": "Delete",
-            "url": "api/v1/products/ ",
+            "url": "api/v1/products/{id}",
             "method": "DELETE",
             "sortNum": 30000,
             "created": "2023-06-22T20:50:18.380Z",
-            "modified": "2023-06-22T20:51:41.284Z",
+            "modified": "2023-06-26T02:03:37.689Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "ee73c689-c2cb-4ae0-ad3c-8b05744c4155",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "8bf41c00-21d9-498b-825a-9a61d97b98f0",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "2058acf3-1cd9-4aae-baae-903ce5cefb40",
+            "name": "Get One",
+            "url": "api/v1/users/{id}",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-06-26T00:20:09.491Z",
+            "modified": "2023-06-26T00:25:29.826Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "01cb11c6-ded7-4b66-bdcb-40c491768994",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "721d3e62-4f49-474e-ba54-30b2758cf340",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "2058acf3-1cd9-4aae-baae-903ce5cefb40",
+            "name": "Create",
+            "url": "api/v1/users",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-06-26T00:21:45.578Z",
+            "modified": "2023-06-26T01:16:13.923Z",
             "headers": [],
             "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"full_name\":\"Vitoria Sabrina\",\n  \"email\": \"vitoria@email.com\",\n  \"password\":\"123\"\n}",
+                "form": []
+            },
             "tests": []
+        },
+        {
+            "_id": "6334abd6-6140-470a-959b-7f3948931a8b",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "2058acf3-1cd9-4aae-baae-903ce5cefb40",
+            "name": "Login",
+            "url": "",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-06-26T00:41:39.349Z",
+            "modified": "2023-06-26T00:41:39.349Z",
+            "headers": []
+        },
+        {
+            "_id": "0ee85a26-fb2b-41b5-9653-47b276a1d702",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "3f9461a4-56a5-48a8-b888-7314484f7705",
+            "name": "By Product",
+            "url": "api/v1/products/{product_id}/chat/",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-06-26T00:54:25.989Z",
+            "modified": "2023-06-26T01:16:33.980Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "product_id",
+                    "value": "bf7c06d2-d82f-4a91-9538-a2ec5fc759de",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "334b3475-ebb4-4605-bfbc-53f51915ef25",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "3f9461a4-56a5-48a8-b888-7314484f7705",
+            "name": "By Buyer",
+            "url": "api/v1/products/chat/buyer/{buyer_id}",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2023-06-26T01:05:39.720Z",
+            "modified": "2023-06-26T01:17:00.239Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "buyer_id",
+                    "value": "43c776f8-9aba-47c7-8af2-a9bfb1bea5a8",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "ed456600-e0fb-48b2-8250-0202d9af179f",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "3f9461a4-56a5-48a8-b888-7314484f7705",
+            "name": "Send Message",
+            "url": "api/v1/products/chat/{chat_id}/message",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2023-06-26T01:34:03.809Z",
+            "modified": "2023-06-26T02:02:40.920Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "chat_id",
+                    "value": "17a959aa-a7dc-4bac-86ed-0557f288ddd0",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"message\": \"Oi tudo bem? Ainda está disponivel?\",\n  \"sender\": \"43c776f8-9aba-47c7-8af2-a9bfb1bea5a8\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "efd2f162-d469-4a23-9a09-979e39295659",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "3f9461a4-56a5-48a8-b888-7314484f7705",
+            "name": "By Owner",
+            "url": "api/v1/products/chat/owner/{owner_id}",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2023-06-26T01:08:00.326Z",
+            "modified": "2023-06-26T01:15:04.731Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "owner_id",
+                    "value": "01cb11c6-ded7-4b66-bdcb-40c491768994",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "e5a4dcad-81d9-4881-8a53-a59d916beb41",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "3f9461a4-56a5-48a8-b888-7314484f7705",
+            "name": "Messages",
+            "url": "api/v1/products/chat/{chat_id}/message",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2023-06-26T01:38:12.623Z",
+            "modified": "2023-06-26T01:38:21.539Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "chat_id",
+                    "value": "6dafea43-57d5-44c0-9648-07fd7e1bde73",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "5f8e39a4-4a89-4c05-b282-cd5496b84de8",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
+            "name": "Product",
+            "url": "",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2023-06-26T01:53:14.971Z",
+            "modified": "2023-06-26T01:53:14.971Z",
+            "headers": []
         }
     ],
     "settings": {
