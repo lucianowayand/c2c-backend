@@ -55,4 +55,10 @@ export class ProductController {
     async delete(@Param('id') id: string) {
         return await this.productService.delete(id);
     }
+
+    @Patch(':id')
+    async update(@Param('id') id: string, @Body() body: ProductEntity) {
+        return await this.productService.update(id, body);
+    }
+
 }

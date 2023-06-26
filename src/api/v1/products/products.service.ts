@@ -203,7 +203,16 @@ export class ProductService {
             await this.productEntity.save(product);
 
         } catch(error) {
-            throw new HttpException(`erro ao criar usuario: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao criar produto: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+        }
+        return product;
+    }
+
+    async update(productId: string, product: ProductEntity){
+        try {
+            await this.productEntity.update({id: productId}, product);
+        } catch(error) {
+            throw new HttpException(`erro ao atualizar produto: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
         }
         return product;
     }
@@ -212,7 +221,7 @@ export class ProductService {
         try {
             await this.productEntity.delete({id: productId});
         } catch(error) {
-            throw new HttpException(`erro ao deletar usuario: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao deletar produto: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
         }
         return {deleted: true};
     }
