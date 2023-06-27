@@ -162,7 +162,7 @@ export class ProductService {
         }
     }
 
-    async findAll(name?: string, category?: CATEGORY, order_price?: "DESC" | "ASC") {
+    async findAll(name?: string, category?: CATEGORY, order_price?: "DESC" | "ASC", city?: string, state?:string) {
         console.log({
             name,
             category,
@@ -171,13 +171,17 @@ export class ProductService {
         try {
             const products = await this.productEntity.find({
                 where:{
-                    name: name ? Like(`%${name}%`) : undefined, 
-                    category: category ? category : undefined
+                    name: Like(`%${name}%`), 
+                    category: category ? category : undefined,
+                    owner: {
+                        city: Like(`%${city}%`),
+                        state: Like(`%${state}%`),
+                    },
                 },
                 order:{
                     value: order_price ? order_price : undefined
                 },
-                relations: ['photos']
+                relations: ['photos', 'owner']
             })
             if (!products) {
                 throw new HttpException('Product list not found', HttpStatus.NOT_FOUND);
@@ -226,6 +230,9 @@ export class ProductService {
 
     async create(product: ProductEntity){
         try {
+            if(!CATEGORY[product.category]) {
+                throw new HttpException('Categoria inválida', HttpStatus.BAD_REQUEST);
+            }
             if(product.photos.length > 0) {
                 const photos = await this.photoEntity.save(product.photos);
                 product.photos = photos;
@@ -233,7 +240,7 @@ export class ProductService {
             await this.productEntity.save(product);
 
         } catch(error) {
-            throw new HttpException(`erro ao criar produto: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao criar produto: ${error.response}`, HttpStatus.BAD_REQUEST);
         }
         return product;
     }

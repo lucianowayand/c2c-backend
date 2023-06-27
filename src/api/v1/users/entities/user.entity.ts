@@ -18,6 +18,12 @@ export class UserEntity {
 
     @Column()
     full_name: string;
+
+    @Column()
+    state: string;
+    
+    @Column()
+    city: string;
     
     @Column({unique: true})
     email: string;

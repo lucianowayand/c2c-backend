@@ -8,8 +8,14 @@ export class ProductController {
     constructor(private productService: ProductService) { }
 
     @Get()
-    async findAll(@Query('name') name: string, @Query('category') category: CATEGORY, @Query('order_price') order_price: "DESC" | "ASC") {
-        return await this.productService.findAll(name, category, order_price);
+    async findAll(
+        @Query('name') name: string, 
+        @Query('category') category: CATEGORY, 
+        @Query('order_price') order_price: "DESC" | "ASC",
+        @Query('city') city: string,
+        @Query('state') state: string,
+    ) {
+        return await this.productService.findAll(name, category, order_price, city, state);
     }
 
     @Get(':id')
