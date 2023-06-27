@@ -1,11 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { And, Like, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProductEntity } from './entities/products.entity';
 import { ChatEntity } from './entities/chat.entity';
 import { MessageEntity } from './entities/message.entity';
 import * as bcrypt from 'bcrypt';
 import { PhotoEntity } from './entities/photo.entity';
+import { CATEGORY } from 'src/utils';
 @Injectable()
 export class ProductService {
     constructor(@InjectRepository(ProductEntity) private readonly productEntity: Repository<ProductEntity>, 
@@ -161,9 +162,21 @@ export class ProductService {
         }
     }
 
-    async findAll() {
+    async findAll(name?: string, category?: CATEGORY, order_price?: "DESC" | "ASC") {
+        console.log({
+            name,
+            category,
+            order_price
+        })
         try {
             const products = await this.productEntity.find({
+                where:{
+                    name: name ? Like(`%${name}%`) : undefined, 
+                    category: category ? category : undefined
+                },
+                order:{
+                    value: order_price ? order_price : undefined
+                },
                 relations: ['photos']
             })
             if (!products) {
@@ -172,6 +185,23 @@ export class ProductService {
             return products;
         } catch (error) {
             throw new HttpException(`erro ao buscar produtos: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    async findById(id: string) {
+        try {
+            const product = await this.productEntity.findOne({
+                where: {
+                    id: id
+                },
+                relations: ['photos', 'owner']
+            })
+            if (!product) {
+                throw new HttpException('Product not found', HttpStatus.NOT_FOUND);
+            }
+            return product;
+        } catch (error) {
+            throw new HttpException(`erro ao buscar produto: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
         }
     }
 

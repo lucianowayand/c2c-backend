@@ -1,14 +1,20 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
 import { ProductService } from './products.service';
 import { ProductEntity } from './entities/products.entity';
+import { CATEGORY } from 'src/utils';
 
 @Controller('api/v1/products')
 export class ProductController {
     constructor(private productService: ProductService) { }
 
     @Get()
-    async findAll() {
-        return await this.productService.findAll();
+    async findAll(@Query('name') name: string, @Query('category') category: CATEGORY, @Query('order_price') order_price: "DESC" | "ASC") {
+        return await this.productService.findAll(name, category, order_price);
+    }
+
+    @Get(':id')
+    async findById(@Param('id') id: string) {
+        return await this.productService.findById(id);
     }
 
     @Get('/user/:userId')
