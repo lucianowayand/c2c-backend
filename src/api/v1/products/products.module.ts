@@ -16,9 +16,7 @@ import { MessageEntity } from './entities/message.entity';
   })
   export class ProductModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
-      consumer
-        .apply(IsAuthorizedMiddleware)
-        .forRoutes('/api/v1/products/teste');
+      consumer.apply(IsAuthorizedMiddleware).forRoutes(ProductController);
     }
   }
   

@@ -53,7 +53,7 @@ export class ProductService {
             })
             return chat;
         } catch (error) {
-            throw new HttpException(`erro ao iniciar conversa: ${error.response}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao iniciar conversa: ${error}`, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -72,7 +72,7 @@ export class ProductService {
             }
             return chats;
         } catch (error) {
-            throw new HttpException(`erro ao buscar chats: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao buscar chats: ${error}`, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -91,7 +91,7 @@ export class ProductService {
             }
             return chats;
         } catch (error) {
-            throw new HttpException(`erro ao buscar chats: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao buscar chats: ${error}`, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -112,7 +112,7 @@ export class ProductService {
             }
             return chats;
         } catch (error) {
-            throw new HttpException(`erro ao buscar chats: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao buscar chats: ${error}`, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -137,7 +137,7 @@ export class ProductService {
             return newMessage;
 
         } catch (error) {
-            throw new HttpException(`erro ao enviar mensagem: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao enviar mensagem: ${error}`, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -166,16 +166,18 @@ export class ProductService {
         console.log({
             name,
             category,
-            order_price
+            order_price,
+            city,
+            state
         })
         try {
             const products = await this.productEntity.find({
                 where:{
-                    name: Like(`%${name}%`), 
+                    name: name? Like(`%${name}%`) : undefined, 
                     category: category ? category : undefined,
                     owner: {
-                        city: Like(`%${city}%`),
-                        state: Like(`%${state}%`),
+                        city: city ? Like(`%${city}%`) : undefined,
+                        state: state? Like(`%${state}%`) : undefined,
                     },
                 },
                 order:{
@@ -188,7 +190,7 @@ export class ProductService {
             }
             return products;
         } catch (error) {
-            throw new HttpException(`erro ao buscar produtos: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao buscar produtos: ${error}`, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -205,7 +207,7 @@ export class ProductService {
             }
             return product;
         } catch (error) {
-            throw new HttpException(`erro ao buscar produto: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao buscar produto: ${error}`, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -224,7 +226,7 @@ export class ProductService {
             }
             return products;
         } catch (error) {
-            throw new HttpException(`erro ao buscar produtos: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao buscar produtos: ${error}`, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -240,16 +242,34 @@ export class ProductService {
             await this.productEntity.save(product);
 
         } catch(error) {
-            throw new HttpException(`erro ao criar produto: ${error.response}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao criar produto: ${error}`, HttpStatus.BAD_REQUEST);
         }
         return product;
     }
 
-    async update(productId: string, product: ProductEntity){
+    async update(productId: string, product: ProductEntity, user_id:string){
         try {
+            const productExists = await this.productEntity.findOne({
+                where: {
+                    id: productId,
+                    owner: {
+                        id: user_id
+                    },
+                }
+            }) 
+            if (!productExists) {
+                throw new HttpException('Product not found', HttpStatus.NOT_FOUND);
+            }
+            if(!CATEGORY[product.category]) {
+                throw new HttpException('Categoria inválida', HttpStatus.BAD_REQUEST);
+            }
+            if(product.photos.length > 0) {
+                const photos = await this.photoEntity.save(product.photos);
+                product.photos = photos;
+            }
             await this.productEntity.update({id: productId}, product);
         } catch(error) {
-            throw new HttpException(`erro ao atualizar produto: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao atualizar produto: ${error}`, HttpStatus.BAD_REQUEST);
         }
         return product;
     }
@@ -269,7 +289,7 @@ export class ProductService {
             await this.productEntity.update({id: productId}, {deletedAt: new Date()});
 
         } catch(error) {
-            throw new HttpException(`erro ao deletar produto: ${error.sqlMessage}`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`erro ao deletar produto: ${error}`, HttpStatus.BAD_REQUEST);
         }
         return {deleted: true};
     }

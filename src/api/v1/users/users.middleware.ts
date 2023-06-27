@@ -17,9 +17,16 @@ export class IsAuthorizedMiddleware implements NestMiddleware {
         }
         try {
             const payload = this.jwtService.verify(token, { secret: process.env.SECRET });
-            const { userId } = req.params;
-            if (payload.sub !== parseInt(userId) || !payload.sub || !parseInt(userId)) {
-                throw new UnauthorizedException();
+            const { user_id } = req.params;
+            console.log(payload, req.params)
+            if(user_id){
+                if (payload.sub !== user_id || !payload.sub) {
+                    throw new UnauthorizedException();
+                }
+            } else {
+                if (!payload.sub) {
+                    throw new UnauthorizedException();
+                }
             }
         } catch {
             throw new UnauthorizedException();

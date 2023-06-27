@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "ODAW",
-    "dateExported": "2023-06-26T02:08:10.163Z",
+    "dateExported": "2023-06-27T14:08:31.011Z",
     "version": "1.1",
     "folders": [
         {
@@ -36,9 +36,44 @@
             "method": "GET",
             "sortNum": 10000,
             "created": "2023-06-22T20:31:40.075Z",
-            "modified": "2023-06-22T20:40:59.743Z",
+            "modified": "2023-06-27T14:02:39.996Z",
             "headers": [],
-            "params": [],
+            "params": [
+                {
+                    "name": "name",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "category",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "order_price",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "city",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "state",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOWE0ZDlkZi1kNDY0LTQxZDUtYTllYy03ZGVkMWFlMjYwODYiLCJlbWFpbCI6InZpdG9yaWFAZW1haWwuY29tIiwiZnVsbF9uYW1lIjoiVml0b3JpYSBTYWJyaW5hIiwiaWF0IjoxNjg3ODc0NTU0fQ.bmokZryHJ8HwwUadBhuqxD4xQTdMBLvDgoTdi69nvk8"
+            },
             "tests": []
         },
         {
@@ -46,24 +81,52 @@
             "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
             "containerId": "3f9461a4-56a5-48a8-b888-7314484f7705",
             "name": "Start Chat",
-            "url": "api/v1/products/{product_id}/chat/{buyer_id}",
+            "url": "api/v1/products/{product_id}/chat/{user_id}",
             "method": "POST",
             "sortNum": 10000,
             "created": "2023-06-26T00:48:47.617Z",
-            "modified": "2023-06-26T02:02:13.723Z",
+            "modified": "2023-06-27T14:04:28.009Z",
             "headers": [],
             "params": [
                 {
                     "name": "product_id",
-                    "value": "ee73c689-c2cb-4ae0-ad3c-8b05744c4155",
+                    "value": "be564a94-5a2b-4ddf-bba9-371c4a715105",
                     "isPath": true
                 },
                 {
-                    "name": "buyer_id",
-                    "value": "43c776f8-9aba-47c7-8af2-a9bfb1bea5a8",
+                    "name": "user_id",
+                    "value": "09a4d9df-d464-41d5-a9ec-7ded1ae26086",
                     "isPath": true
                 }
             ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOWE0ZDlkZi1kNDY0LTQxZDUtYTllYy03ZGVkMWFlMjYwODYiLCJlbWFpbCI6InZpdG9yaWFAZW1haWwuY29tIiwiZnVsbF9uYW1lIjoiVml0b3JpYSBTYWJyaW5hIiwiaWF0IjoxNjg3ODc0NTU0fQ.bmokZryHJ8HwwUadBhuqxD4xQTdMBLvDgoTdi69nvk8"
+            },
+            "tests": []
+        },
+        {
+            "_id": "4903ee91-85a1-4733-9eb9-28530de82aff",
+            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
+            "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
+            "name": "By Id",
+            "url": "api/v1/products/{id}",
+            "method": "GET",
+            "sortNum": 17500,
+            "created": "2023-06-27T03:06:30.383Z",
+            "modified": "2023-06-27T14:01:50.034Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "be564a94-5a2b-4ddf-bba9-371c4a715105",
+                    "isPath": true
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOWE0ZDlkZi1kNDY0LTQxZDUtYTllYy03ZGVkMWFlMjYwODYiLCJlbWFpbCI6InZpdG9yaWFAZW1haWwuY29tIiwiZnVsbF9uYW1lIjoiVml0b3JpYSBTYWJyaW5hIiwiaWF0IjoxNjg3ODcxOTk4fQ.HsXVfoNXeAmDyOsBMUaAoPfCvnTlLu6eOs9bLPv0MTM"
+            },
             "tests": []
         },
         {
@@ -71,19 +134,23 @@
             "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
             "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
             "name": "By User",
-            "url": "api/v1/products/user/{user_id}",
+            "url": "api/v1/products/owner/{owner_id}",
             "method": "GET",
-            "sortNum": 15000,
+            "sortNum": 18750,
             "created": "2023-06-26T00:36:35.865Z",
-            "modified": "2023-06-26T00:38:09.464Z",
+            "modified": "2023-06-27T13:44:02.870Z",
             "headers": [],
             "params": [
                 {
-                    "name": "user_id",
-                    "value": "01cb11c6-ded7-4b66-bdcb-40c491768994",
+                    "name": "owner_id",
+                    "value": "949f65bc-f9c9-4252-b0fd-4819569f8447",
                     "isPath": true
                 }
             ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOWE0ZDlkZi1kNDY0LTQxZDUtYTllYy03ZGVkMWFlMjYwODYiLCJlbWFpbCI6InZpdG9yaWFAZW1haWwuY29tIiwiZnVsbF9uYW1lIjoiVml0b3JpYSBTYWJyaW5hIiwiaWF0IjoxNjg3ODcxMjU4fQ.4HjTJhck9YhpV3KYBmJA1u6q_yq5mKgvOjx9R3VQiRw"
+            },
             "tests": []
         },
         {
@@ -91,17 +158,21 @@
             "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
             "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
             "name": "Create",
-            "url": "api/v1/products/",
+            "url": "api/v1/products/owner/949f65bc-f9c9-4252-b0fd-4819569f8447",
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-06-22T20:40:31.353Z",
-            "modified": "2023-06-26T01:42:49.262Z",
+            "modified": "2023-06-27T13:43:52.069Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"Gol bola\",\n  \"value\": 5000,\n  \"category\": \"VEHICLES\",\n  \"owner\": \"01cb11c6-ded7-4b66-bdcb-40c491768994\",\n  \"photos\": [\n    {\n      \"photo_url\": \"abc.com\"\n    },\n    {\n      \"photo_url\": \"abc.com\"\n    },\n    {\n      \"photo_url\": \"abc.com\"\n    }\n  ],\n  \"description\": \"novinho pa caramba\"\n}",
+                "raw": "{\n  \"name\": \"unknown\",\n  \"value\": 500,\n  \"category\": \"BOOKS\",\n  \"photos\": [\n    {\n      \"photo_url\": \"abc.com\"\n    }\n  ],\n  \"description\": \"\"\n}",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5NDlmNjViYy1mOWM5LTQyNTItYjBmZC00ODE5NTY5Zjg0NDciLCJlbWFpbCI6Imx1Y2lhbm9AZW1haWwuY29tIiwiZnVsbF9uYW1lIjoiTHVjaWFubyBBYnJldSIsImlhdCI6MTY4Nzg3MzEyMH0.2anqkIufS_xKl-DvNaO2sdzkdYPvaSzAlnjOamRuHKM"
             },
             "tests": []
         },
@@ -110,16 +181,21 @@
             "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
             "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
             "name": "Delete",
-            "url": "api/v1/products/{id}",
+            "url": "api/v1/products/{id}/owner/{user_id}",
             "method": "DELETE",
             "sortNum": 30000,
             "created": "2023-06-22T20:50:18.380Z",
-            "modified": "2023-06-26T02:03:37.689Z",
+            "modified": "2023-06-27T14:02:58.556Z",
             "headers": [],
             "params": [
                 {
                     "name": "id",
-                    "value": "ee73c689-c2cb-4ae0-ad3c-8b05744c4155",
+                    "value": "be564a94-5a2b-4ddf-bba9-371c4a715105",
+                    "isPath": true
+                },
+                {
+                    "name": "user_id",
+                    "value": "949f65bc-f9c9-4252-b0fd-4819569f8447",
                     "isPath": true
                 }
             ],
@@ -134,12 +210,12 @@
             "method": "GET",
             "sortNum": 40000,
             "created": "2023-06-26T00:20:09.491Z",
-            "modified": "2023-06-26T00:25:29.826Z",
+            "modified": "2023-06-27T13:49:40.470Z",
             "headers": [],
             "params": [
                 {
                     "name": "id",
-                    "value": "01cb11c6-ded7-4b66-bdcb-40c491768994",
+                    "value": "09a4d9df-d464-41d5-a9ec-7ded1ae26086",
                     "isPath": true
                 }
             ],
@@ -154,12 +230,12 @@
             "method": "POST",
             "sortNum": 50000,
             "created": "2023-06-26T00:21:45.578Z",
-            "modified": "2023-06-26T01:16:13.923Z",
+            "modified": "2023-06-27T13:38:20.053Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"full_name\":\"Vitoria Sabrina\",\n  \"email\": \"vitoria@email.com\",\n  \"password\":\"123\"\n}",
+                "raw": "{\n  \"full_name\":\"Luciano Abreu\",\n  \"email\": \"luciano@email.com\",\n  \"city\":\"Joinville\",\n  \"state\":\"SC\",\n  \"password\":\"123\"\n}",
                 "form": []
             },
             "tests": []
@@ -169,12 +245,19 @@
             "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
             "containerId": "2058acf3-1cd9-4aae-baae-903ce5cefb40",
             "name": "Login",
-            "url": "",
-            "method": "GET",
+            "url": "api/v1/users/login",
+            "method": "POST",
             "sortNum": 70000,
             "created": "2023-06-26T00:41:39.349Z",
-            "modified": "2023-06-26T00:41:39.349Z",
-            "headers": []
+            "modified": "2023-06-27T14:02:34.411Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"vitoria@email.com\",\n  \"password\":\"123\"\n}",
+                "form": []
+            },
+            "tests": []
         },
         {
             "_id": "0ee85a26-fb2b-41b5-9653-47b276a1d702",
@@ -185,12 +268,12 @@
             "method": "GET",
             "sortNum": 90000,
             "created": "2023-06-26T00:54:25.989Z",
-            "modified": "2023-06-26T01:16:33.980Z",
+            "modified": "2023-06-27T02:51:51.487Z",
             "headers": [],
             "params": [
                 {
                     "name": "product_id",
-                    "value": "bf7c06d2-d82f-4a91-9538-a2ec5fc759de",
+                    "value": "b5f4df00-4042-460a-b326-4333be913499",
                     "isPath": true
                 }
             ],
@@ -201,19 +284,23 @@
             "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
             "containerId": "3f9461a4-56a5-48a8-b888-7314484f7705",
             "name": "By Buyer",
-            "url": "api/v1/products/chat/buyer/{buyer_id}",
+            "url": "api/v1/products/chat/buyer/{user_id}",
             "method": "GET",
             "sortNum": 100000,
             "created": "2023-06-26T01:05:39.720Z",
-            "modified": "2023-06-26T01:17:00.239Z",
+            "modified": "2023-06-27T14:05:16.102Z",
             "headers": [],
             "params": [
                 {
-                    "name": "buyer_id",
-                    "value": "43c776f8-9aba-47c7-8af2-a9bfb1bea5a8",
+                    "name": "user_id",
+                    "value": "09a4d9df-d464-41d5-a9ec-7ded1ae26086",
                     "isPath": true
                 }
             ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOWE0ZDlkZi1kNDY0LTQxZDUtYTllYy03ZGVkMWFlMjYwODYiLCJlbWFpbCI6InZpdG9yaWFAZW1haWwuY29tIiwiZnVsbF9uYW1lIjoiVml0b3JpYSBTYWJyaW5hIiwiaWF0IjoxNjg3ODc0NTU0fQ.bmokZryHJ8HwwUadBhuqxD4xQTdMBLvDgoTdi69nvk8"
+            },
             "tests": []
         },
         {
@@ -221,23 +308,32 @@
             "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
             "containerId": "3f9461a4-56a5-48a8-b888-7314484f7705",
             "name": "Send Message",
-            "url": "api/v1/products/chat/{chat_id}/message",
+            "url": "api/v1/products/user/{user_id}/chat/{chat_id}/message",
             "method": "POST",
             "sortNum": 100000,
             "created": "2023-06-26T01:34:03.809Z",
-            "modified": "2023-06-26T02:02:40.920Z",
+            "modified": "2023-06-27T14:06:52.578Z",
             "headers": [],
             "params": [
                 {
+                    "name": "user_id",
+                    "value": "949f65bc-f9c9-4252-b0fd-4819569f8447",
+                    "isPath": true
+                },
+                {
                     "name": "chat_id",
-                    "value": "17a959aa-a7dc-4bac-86ed-0557f288ddd0",
+                    "value": "797e612a-1d54-4dac-88f0-41fee7714729",
                     "isPath": true
                 }
             ],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"message\": \"Oi tudo bem? Ainda está disponivel?\",\n  \"sender\": \"43c776f8-9aba-47c7-8af2-a9bfb1bea5a8\"\n}",
+                "raw": "{\n  \"message\": \"Oi tudo bem? Ainda está disponivel?\"\n}",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOWE0ZDlkZi1kNDY0LTQxZDUtYTllYy03ZGVkMWFlMjYwODYiLCJlbWFpbCI6InZpdG9yaWFAZW1haWwuY29tIiwiZnVsbF9uYW1lIjoiVml0b3JpYSBTYWJyaW5hIiwiaWF0IjoxNjg3ODc0NTU0fQ.bmokZryHJ8HwwUadBhuqxD4xQTdMBLvDgoTdi69nvk8"
             },
             "tests": []
         },
@@ -270,28 +366,20 @@
             "method": "GET",
             "sortNum": 110000,
             "created": "2023-06-26T01:38:12.623Z",
-            "modified": "2023-06-26T01:38:21.539Z",
+            "modified": "2023-06-27T14:07:07.660Z",
             "headers": [],
             "params": [
                 {
                     "name": "chat_id",
-                    "value": "6dafea43-57d5-44c0-9648-07fd7e1bde73",
+                    "value": "797e612a-1d54-4dac-88f0-41fee7714729",
                     "isPath": true
                 }
             ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOWE0ZDlkZi1kNDY0LTQxZDUtYTllYy03ZGVkMWFlMjYwODYiLCJlbWFpbCI6InZpdG9yaWFAZW1haWwuY29tIiwiZnVsbF9uYW1lIjoiVml0b3JpYSBTYWJyaW5hIiwiaWF0IjoxNjg3ODc0NTU0fQ.bmokZryHJ8HwwUadBhuqxD4xQTdMBLvDgoTdi69nvk8"
+            },
             "tests": []
-        },
-        {
-            "_id": "5f8e39a4-4a89-4c05-b282-cd5496b84de8",
-            "colId": "c46f933b-771f-43e0-a6c0-1302db8a4f5c",
-            "containerId": "fe4af666-3b12-4a2d-9677-a3f74d194b80",
-            "name": "Product",
-            "url": "",
-            "method": "GET",
-            "sortNum": 120000,
-            "created": "2023-06-26T01:53:14.971Z",
-            "modified": "2023-06-26T01:53:14.971Z",
-            "headers": []
         }
     ],
     "settings": {

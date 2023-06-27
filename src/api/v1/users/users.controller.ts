@@ -7,8 +7,8 @@ export class UsersController {
     
     constructor(private usersService: UsersService) {}
 
-    @Get(':id')
-    get(@Param('id') id: string) {
+    @Get(':user_id')
+    get(@Param('user_id') id: string) {
         return this.usersService.findOne(id);
     }
     
@@ -22,13 +22,13 @@ export class UsersController {
         return this.usersService.login(body);
     }
 
-    @Delete(':id')
-    delete(@Param('id') id: number) {
+    @Delete(':user_id')
+    delete(@Param('user_id') id: number) {
         return this.usersService.delete(id);
     }
 
-    @Patch(':id')
-    update(@Param('id') id: string, @Body() user: UserEntity) {
+    @Patch(':user_id')
+    update(@Param('user_id') id: string, @Body() user: UserEntity) {
         return this.usersService.update(id, user);
     }
 }
