@@ -57,7 +57,6 @@ export class ProductController {
     @Post('/owner/:user_id')
     async create(@Param('user_id') user_id: string, @Body() body: ProductEntity) {
         const product = {...body, owner: {...body.owner, id: user_id}};
-        console.log(user_id, product)
         return await this.productService.create(product);
     }
 

@@ -163,13 +163,6 @@ export class ProductService {
     }
 
     async findAll(name?: string, category?: CATEGORY, order_price?: "DESC" | "ASC", city?: string, state?:string) {
-        console.log({
-            name,
-            category,
-            order_price,
-            city,
-            state
-        })
         try {
             const products = await this.productEntity.find({
                 where:{
