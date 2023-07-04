@@ -4,9 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './api/v1/users/users.module';
-import { ProductController } from './api/v1/products/products.controller';
 import { ProductModule } from './api/v1/products/products.module';
-import { ProductService } from './api/v1/products/products.service';
 
 @Module({
   imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({

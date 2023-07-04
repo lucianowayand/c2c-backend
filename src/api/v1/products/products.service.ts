@@ -41,7 +41,7 @@ export class ProductService {
                 }
             })
             if (chatExists) {
-                throw new HttpException('Chat already exists', HttpStatus.BAD_REQUEST);
+                return chatExists;
             }
             const chat = await this.chatEntity.save({
                 buyer: {
