@@ -84,7 +84,7 @@ export class ProductService {
                         id: user_id
                     }
                 },
-                relations: ['product']
+                relations: ['product','product.photos','product.owner']
             })
             if (!chats) {
                 throw new HttpException('Chat not found', HttpStatus.NOT_FOUND);
@@ -105,7 +105,7 @@ export class ProductService {
                         }
                     }
                 },
-                relations: ['buyer', 'product']
+                relations: ['buyer', 'product','product.photos']
             })
             if (!chats) {
                 throw new HttpException('Chat not found', HttpStatus.NOT_FOUND);
@@ -147,10 +147,10 @@ export class ProductService {
                 where: {
                     chat: {
                         id: chat_id
-                    }
+                    },
                 },
                 order: {
-                    createdAt: 'DESC'
+                    createdAt: 'ASC'
                 }
             })
             if (!messages) {
