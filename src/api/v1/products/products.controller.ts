@@ -1,8 +1,17 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
 import { ProductService } from './products.service';
 import { ProductEntity } from './entities/products.entity';
-import { CATEGORY } from 'src/utils';
-
+export enum CATEGORY {
+    BOOKS= "BOOKS",
+    CLOTHING= "CLOTHING",
+    ENTERTAINMENT= "ENTERTAINMENT",
+    ELETRONICS= "ELETRONICS",
+    FURNITURE= "FURNITURE",
+    IMOBILIARY= "IMOBILIARY",
+    KITCHEN= "KITCHEN",
+    SCHOOL_SUPPLIES= "SCHOOL_SUPPLIES",
+    VEHICLES= "VEHICLES",
+}
 @Controller('api/v1/products')
 export class ProductController {
     constructor(private productService: ProductService) { }

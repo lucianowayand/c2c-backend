@@ -9,7 +9,17 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
   } from 'typeorm';
-  import { CATEGORY } from 'src/utils';
+  export enum CATEGORY {
+    BOOKS= "BOOKS",
+    CLOTHING= "CLOTHING",
+    ENTERTAINMENT= "ENTERTAINMENT",
+    ELETRONICS= "ELETRONICS",
+    FURNITURE= "FURNITURE",
+    IMOBILIARY= "IMOBILIARY",
+    KITCHEN= "KITCHEN",
+    SCHOOL_SUPPLIES= "SCHOOL_SUPPLIES",
+    VEHICLES= "VEHICLES",
+}
   import { PhotoEntity } from './photo.entity';
 import { ChatEntity } from './chat.entity';
 import { UserEntity } from '../../users/entities/user.entity';

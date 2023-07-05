@@ -6,7 +6,17 @@ import { ChatEntity } from './entities/chat.entity';
 import { MessageEntity } from './entities/message.entity';
 import * as bcrypt from 'bcrypt';
 import { PhotoEntity } from './entities/photo.entity';
-import { CATEGORY } from 'src/utils';
+export enum CATEGORY {
+    BOOKS= "BOOKS",
+    CLOTHING= "CLOTHING",
+    ENTERTAINMENT= "ENTERTAINMENT",
+    ELETRONICS= "ELETRONICS",
+    FURNITURE= "FURNITURE",
+    IMOBILIARY= "IMOBILIARY",
+    KITCHEN= "KITCHEN",
+    SCHOOL_SUPPLIES= "SCHOOL_SUPPLIES",
+    VEHICLES= "VEHICLES",
+}
 @Injectable()
 export class ProductService {
     constructor(@InjectRepository(ProductEntity) private readonly productEntity: Repository<ProductEntity>, 
